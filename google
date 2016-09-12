@@ -1,0 +1,10 @@
+#!/usr/bin/perl
+
+$q = join (' ', @ARGV);
+$q =~ s/([%&=\+])/sprintf('%%%02X',\1)/gse;
+$q =~ s/ /\+/gs;
+
+$url = "https://www.google.com/search?q=$q";
+
+exec "links $url\n";
+
